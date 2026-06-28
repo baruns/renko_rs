@@ -1,0 +1,55 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "renko_rs"
+version = "0.1.0"
+description = "High-performance Renko chart generator written in Rust"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "BARUN SINGH", email = "barun@nglogix.com" }]
+keywords = ["renko", "finance", "trading", "charts", "polars"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Rust",
+    "Topic :: Office/Business :: Financial",
+]
+dependencies = ["polars>=1.0"]
+
+[project.urls]
+Homepage = "https://github.com/baruns/renko_rs"
+Repository = "https://github.com/baruns/renko_rs"
+Issues = "https://github.com/baruns/renko_rs/issues"
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+python-source = "python"
+module-name = "renko_rs._renko_rs"
+
+[tool.cibuildwheel]
+build = "cp310-* cp311-* cp312-* cp313-* cp314-*"
+skip = "*-musllinux_* *-win32 *-manylinux_i686"
+test-requires = ["numpy", "pandas"]
+test-command = "python {project}/tests/test_renko.py"
+
+[tool.cibuildwheel.linux]
+before-all = "curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain stable --profile minimal"
+environment = { PATH = "$HOME/.cargo/bin:$PATH", PYO3_USE_ABI3_FORWARD_COMPATIBILITY = "1" }
+
+[tool.cibuildwheel.macos]
+before-all = "curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain stable --profile minimal"
+environment = { PATH = "$HOME/.cargo/bin:$PATH", PYO3_USE_ABI3_FORWARD_COMPATIBILITY = "1" }
+
+[tool.cibuildwheel.windows]
+before-all = "curl -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile minimal"
+environment = { PATH = "$HOME/.cargo/bin:$PATH", PYO3_USE_ABI3_FORWARD_COMPATIBILITY = "1" }
