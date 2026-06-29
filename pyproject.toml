@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "renko_rs"
-version = "0.2.1"
+version = "0.2.2"
 description = "High-performance Renko chart generator written in Rust"
 readme = "README.md"
 requires-python = ">=3.10"
