@@ -71,10 +71,8 @@ jobs:
           target: aarch64
           args: --release --out dist --interpreter python${{ matrix.python-version }}
           manylinux: '2_28'
-          container: 'ghcr.io/pyo3/maturin-action:latest'
         env:
           PYO3_USE_ABI3_FORWARD_COMPATIBILITY: '1'
-          CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
 
       - name: Upload wheels
         uses: actions/upload-artifact@v4
@@ -114,43 +112,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wheels-windows-x86_64-py${{ matrix.python-version }}
-          path: dist/*.whl
-
-  windows-aarch64:
-    name: Windows ARM64
-    runs-on: windows-latest
-    continue-on-error: true
-    strategy:
-      matrix:
-        python-version: ['3.10', '3.11', '3.12', '3.13', '3.14']
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
-          architecture: arm64
-          allow-prereleases: true
-
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          targets: aarch64-pc-windows-msvc
-
-      - name: Build wheels
-        uses: PyO3/maturin-action@v1
-        with:
-          target: aarch64
-          args: --release --out dist --interpreter python${{ matrix.python-version }}
-        env:
-          PYO3_USE_ABI3_FORWARD_COMPATIBILITY: '1'
-
-      - name: Upload wheels
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: wheels-windows-aarch64-py${{ matrix.python-version }}
           path: dist/*.whl
 
   macos-x86_64:
@@ -248,7 +209,6 @@ jobs:
       - linux-x86_64
       - linux-aarch64
       - windows-x86_64
-      - windows-aarch64
       - macos-x86_64
       - macos-aarch64
       - sdist
