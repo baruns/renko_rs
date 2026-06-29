@@ -1,6 +1,6 @@
 [package]
 name = "renko_rs"
-version = "0.1.6"
+version = "0.2.0"
 edition = "2021"
 
 [lib]
@@ -8,9 +8,9 @@ name = "renko_rs"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-polars = { version = "0.45", features = ["dtype-datetime"] }
-pyo3 = { version = "0.22", features = ["extension-module"] }
-pyo3-polars = "0.19"
+polars = { version = "0.54", features = ["dtype-datetime"] }
+pyo3 = { version = "0.28", features = ["extension-module"] }
+pyo3-polars = "0.27"
 thiserror = "2"
 
 [dev-dependencies]

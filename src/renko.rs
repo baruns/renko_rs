@@ -43,6 +43,7 @@ impl Renko {
         }
 
         let dt = datetime_ca
+            .phys
             .cont_slice()
             .map_err(|_| RenkoError::WrongColumnType("datetime".into(), "contiguous i64".into()))?;
         let prices = close_ca

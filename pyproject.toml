@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "renko_rs"
-version = "0.1.6"
+version = "0.2.0"
 description = "High-performance Renko chart generator written in Rust"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -24,7 +24,7 @@ classifiers = [
     "Programming Language :: Rust",
     "Topic :: Office/Business :: Financial",
 ]
-dependencies = ["polars>=1.0,<1.18"]
+dependencies = ["polars>=1.0"]
 
 [project.urls]
 Homepage = "https://github.com/baruns/renko_rs"
