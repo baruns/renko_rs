@@ -4,8 +4,7 @@
 
 Transform tick data into OHLCV Renko DataFrames at native speed!
 
-[![PyPI version](https://img.shields.io/pypi/v/renko_rs.svg)](https://pypi.org/project/renko_rs/)
-[![Python](https://img.shields.io/pypi/pyversions/renko_rs.svg)](https://pypi.org/project/renko_rs/)
+[![Python](https://img.shields.io/pypi/pyversions/renko_rs.svg?v=3)](https://pypi.org/project/renko_rs/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is a **Rust implementation** of the [renkodf](https://github.com/srlcarlg/renkodf) library, providing identical Renko chart calculations with **10-100x performance improvement** through native code execution.
