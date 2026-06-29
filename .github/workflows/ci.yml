@@ -38,7 +38,7 @@ jobs:
       - name: Install wheel
         shell: bash
         run: |
-          pip install numpy pandas polars
+          pip install numpy pandas "polars>=1.0,<1.18"
           pip install dist/*.whl --force-reinstall
 
       - name: Run tests
